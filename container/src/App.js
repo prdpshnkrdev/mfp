@@ -7,14 +7,14 @@ import {
 import MarketingApp from "./components/MarketingApp";
 import Header from "./components/Header";
 
-// const generateClassName = createGenerateClassName({
-//   productionPrefix: "co ",
-// });
+const generateClassName = createGenerateClassName({
+  productionPrefix: "co ",
+});
 
 export default () => {
   return (
     <BrowserRouter>
-      <StylesProvider>
+      <StylesProvider generateClassName={generateClassName}>
         <div>
           <Header />
           <MarketingApp />
