@@ -21,14 +21,15 @@ const history = createBrowserHistory();
 
 export default () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+
   useEffect(() => {
     if (isSignedIn) {
-      history.push("./dashboard");
+      history.push("/dashboard");
     }
   }, [isSignedIn]);
 
   return (
-    <Router>
+    <Router history={history}>
       <StylesProvider generateClassName={generateClassName}>
         <div>
           <Header
@@ -44,9 +45,7 @@ export default () => {
                 {!isSignedIn && <Redirect to="/" />}
                 <DashboardLazy />
               </Route>
-              <Route path="/">
-                <MarketingLazy isSignedIn={isSignedIn} />
-              </Route>
+              <Route path="/" component={MarketingLazy} />
             </Switch>
           </Suspense>
         </div>
